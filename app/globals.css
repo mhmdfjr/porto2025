@@ -2,26 +2,145 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 72.2% 50.6%;
+    --primary-foreground: 0 85.7% 97.3%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 72.2% 50.6%;
+    --radius: 0.5rem;
+    --font-imperial-script: "Imperial Script", cursive;
+    --font-bonanova-display: "Bona Nova", serif;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Font classes */
+  .font-imperial-script {
+    font-family: var(--font-imperial-script);
+  }
+
+  .font-bonanova-display {
+    font-family: var(--font-bonanova-display);
+  }
+
+  /* Reduced background gradients since Spline will provide the main visual interest */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: linear-gradient(
+      135deg,
+      rgba(220, 38, 38, 0.03) 0%,
+      rgba(0, 0, 0, 1) 10%,
+      rgba(0, 0, 0, 1) 90%,
+      rgba(251, 146, 60, 0.03) 100%
+    );
+  }
+
+  /* Optional: Keep a very subtle animated gradient behind Spline */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: radial-gradient(
+        circle at 5% 15%,
+        rgba(239, 68, 68, 0.02) 0%,
+        transparent 25%
+      ),
+      radial-gradient(
+        circle at 95% 85%,
+        rgba(251, 146, 60, 0.02) 0%,
+        transparent 25%
+      );
+    animation: backgroundShift 40s ease-in-out infinite;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@keyframes backgroundShift {
+  0%,
+  100% {
+    background: radial-gradient(
+        circle at 5% 15%,
+        rgba(239, 68, 68, 0.02) 0%,
+        transparent 25%
+      ),
+      radial-gradient(
+        circle at 95% 85%,
+        rgba(251, 146, 60, 0.02) 0%,
+        transparent 25%
+      );
   }
+  50% {
+    background: radial-gradient(
+        circle at 95% 15%,
+        rgba(239, 68, 68, 0.02) 0%,
+        transparent 25%
+      ),
+      radial-gradient(
+        circle at 5% 85%,
+        rgba(251, 146, 60, 0.02) 0%,
+        transparent 25%
+      );
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #ef4444, #f97316);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #dc2626, #ea580c);
+}
+
+/* Smooth animations */
+* {
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
+    backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
