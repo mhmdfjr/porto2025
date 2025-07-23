@@ -1,40 +1,35 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { GradientText } from "@/app/_components/atoms/gradient-text";
 import { SkillTag } from "@/app/_components/molecules/skill-tag";
-
-const skillCategories = [
-  {
-    category: "Frontend",
-    skills: [
-      "Next.js",
-      "React",
-      "JavaScript",
-      "TypeScript",
-      "HTML",
-      "CSS",
-      "Tailwind CSS",
-    ],
-  },
-  {
-    category: "Backend & Database",
-    skills: ["Node.js", "MongoDB", "MySQL", "PostgreSQL"],
-  },
-  {
-    category: "Tools & Others",
-    skills: [
-      "Git",
-      "Figma",
-      "Photoshop",
-      "Bootstrap",
-      "Framer Motion",
-      "Prisma",
-    ],
-  },
-];
+import { getSkills } from "@/lib/database";
+import type { Skill } from "@/lib/supabase";
 
 export function SkillsSection() {
+  const [skills, setSkills] = useState<Skill[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchSkills() {
+      const skillsData = await getSkills();
+      setSkills(skillsData);
+      setLoading(false);
+    }
+    fetchSkills();
+  }, []);
+
+  if (loading) {
+    return (
+      <section id="skills" className="py-20 relative">
+        <div className="container mx-auto px-4 text-center">
+          <div className="text-white">Loading skills...</div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="skills" className="py-20 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-900/5 to-transparent" />
@@ -48,37 +43,16 @@ export function SkillsSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 font-bonanova-display">
-            <p>
-              <GradientText className="font-imperial-script text-5xl md:text-6xl font-bold overflow-visible">
-                S
-              </GradientText>
-              kills
-            </p>
+            <GradientText className="font-imperial-script text-5xl md:text-6xl font-bold overflow-visible">
+              S
+            </GradientText>
+            kills
           </h2>
         </motion.div>
 
-        <div className="space-y-12">
-          {skillCategories.map((category, categoryIndex) => (
-            <motion.div
-              key={category.category}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-2xl font-semibold text-white mb-6 text-center">
-                {category.category}
-              </h3>
-              <div className="flex flex-wrap justify-center gap-4">
-                {category.skills.map((skill, skillIndex) => (
-                  <SkillTag
-                    key={skill}
-                    skill={skill}
-                    delay={categoryIndex * 0.2 + skillIndex * 0.1}
-                  />
-                ))}
-              </div>
-            </motion.div>
+        <div className="flex flex-wrap justify-center gap-4">
+          {skills.map((skill, index) => (
+            <SkillTag key={skill.id} skill={skill.name} delay={index * 0.1} />
           ))}
         </div>
       </div>

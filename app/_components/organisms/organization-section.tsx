@@ -1,39 +1,37 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { GradientText } from "@/app/_components/atoms/gradient-text";
 import { GlowCard } from "@/app/_components/atoms/glow-card";
-import { Calendar, Users } from "lucide-react";
+import { Calendar, MapPin } from "lucide-react";
 import Image from "next/image";
-
-const organizations = [
-  {
-    name: "I-Secret ILKOM UNNES",
-    position: "Staff of Computer Networking Division",
-    duration: "2023",
-    description:
-      "Active member in computer networking division, contributing to technical projects and knowledge sharing.",
-    logo: "/placeholder.svg?height=60&width=60",
-  },
-  {
-    name: "Technology Community NEPAL",
-    position: "Member of Programming Division",
-    duration: "2018",
-    description:
-      "Participated in programming activities and community development projects.",
-    logo: "/placeholder.svg?height=60&width=60",
-  },
-  {
-    name: "UKM RIPTEK UNNES",
-    position: "Staff of Information Technology Development Division",
-    duration: "2024",
-    description:
-      "Contributing to IT development initiatives and supporting technology advancement in the university.",
-    logo: "/placeholder.svg?height=60&width=60",
-  },
-];
+import { getOrganizations } from "@/lib/database";
+import type { Organization } from "@/lib/supabase";
 
 export function OrganizationSection() {
+  const [organizations, setOrganizations] = useState<Organization[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchOrganizations() {
+      const organizationsData = await getOrganizations();
+      setOrganizations(organizationsData);
+      setLoading(false);
+    }
+    fetchOrganizations();
+  }, []);
+
+  if (loading) {
+    return (
+      <section id="project" className="py-20 relative">
+        <div className="container mx-auto px-4 text-center">
+          <div className="text-white">Loading project experience...</div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="organization" className="py-20 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-900/5 to-transparent" />
@@ -47,12 +45,10 @@ export function OrganizationSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 font-bonanova-display">
-            <p>
-              <GradientText className="font-imperial-script text-5xl md:text-6xl font-bold overflow-visible">
-                O
-              </GradientText>
-              rganizations
-            </p>
+            <GradientText className="font-imperial-script text-5xl md:text-6xl font-bold overflow-visible">
+              O
+            </GradientText>
+            rganizations
           </h2>
         </motion.div>
 
@@ -69,7 +65,7 @@ export function OrganizationSection() {
                 <div className="flex items-start gap-6">
                   <div className="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 bg-white/10 flex items-center justify-center">
                     <Image
-                      src={org.logo || "/placeholder.svg"}
+                      src={org.image || "/placeholder.svg"}
                       alt={org.name}
                       width={60}
                       height={60}
@@ -80,21 +76,26 @@ export function OrganizationSection() {
                     <h3 className="text-xl font-semibold text-white mb-1">
                       {org.name}
                     </h3>
-                    <p className="text-red-400 font-medium mb-2">
-                      {org.position}
-                    </p>
+                    {org.role.map((role, roleIndex) => (
+                      <div
+                        key={roleIndex}
+                        className="flex items-center justify-start gap-4"
+                      >
+                        <div className="flex items-center gap-1 mb-2">
+                          <Calendar size={14} />
+                          {org.year[roleIndex]}
+                        </div>
+                        <p className="text-red-400 font-medium mb-2">{role}</p>
+                      </div>
+                    ))}
                     <div className="flex items-center gap-4 text-sm text-gray-400 mb-3">
                       <div className="flex items-center gap-1">
-                        <Calendar size={14} />
-                        {org.duration}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Users size={14} />
-                        Organization
+                        <MapPin size={14} />
+                        {org.location}
                       </div>
                     </div>
                     <p className="text-gray-300 leading-relaxed">
-                      {org.description}
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     </p>
                   </div>
                 </div>

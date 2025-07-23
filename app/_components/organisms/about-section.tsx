@@ -6,6 +6,7 @@ import { GradientText } from "@/app/_components/atoms/gradient-text";
 import { FeatureCard } from "@/app/_components/molecules/feature-card";
 import { GlowCard } from "@/app/_components/atoms/glow-card";
 import Image from "next/image";
+import ProfilCard from "@/app/_components/molecules/profil-card";
 
 const features = [
   {
@@ -39,44 +40,50 @@ export function AboutSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 font-bonanova-display">
-            <p>
-              <GradientText className="font-imperial-script text-5xl md:text-6xl font-bold overflow-visible">
-                A
-              </GradientText>
-              bout Me
-            </p>
+            <GradientText className=" font-imperial-script text-5xl md:text-6xl font-bold overflow-visible">
+              A
+            </GradientText>
+            <span>bout Me</span>
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-1 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            className="flex justify-center items-center"
           >
-            <GlowCard className="p-4 sm:p-6 lg:p-8">
-              {/* Mobile Layout - Stack vertically */}
+            <GlowCard className="w-full lg:w-1/2 p-4 sm:p-6 lg:p-8">
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
-                <div className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-2xl overflow-hidden flex-shrink-0">
-                  <Image
-                    src="/placeholder.svg?height=128&width=128"
-                    alt="Fajar"
-                    width={128}
-                    height={128}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                <ProfilCard
+                  imageSrc="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
+                  altText="Kendrick Lamar - GNX Album Cover"
+                  captionText="Kendrick Lamar - GNX"
+                  containerHeight="200px"
+                  containerWidth="200px"
+                  imageHeight="200px"
+                  imageWidth="200px"
+                  rotateAmplitude={8}
+                  scaleOnHover={1.05}
+                  showMobileWarning={false}
+                  showTooltip={true}
+                  displayOverlayContent={true}
+                  overlayContent={
+                    <p className="tilted-card-demo-text">Mohamad Fajar</p>
+                  }
+                />
                 <div className="text-center sm:text-left">
                   <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
-                    Fajar
+                    Hello, Fellas!
                   </h3>
                   <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-                    Hello, my name is Mohamad Fajar Nur Khasani and I'm 21 years
-                    old. I'm a Full Stack Web Developer. I studied Computer
-                    Science at University & Computer Networks in High School. I
-                    have had a great interest in Technology & Arts since I was a
-                    child. I'm so excited to collaborate with you.
+                    My name is <strong>Mohamad Fajar Nur Khasani</strong> and
+                    I'm 21 years old. I'm a Full Stack Web Developer. I studied
+                    Computer Science at University & Computer Networks in High
+                    School. I have had a great interest in Technology & Arts
+                    since I was a child. I'm so excited to collaborate with you.
                   </p>
                 </div>
               </div>
@@ -90,10 +97,10 @@ export function AboutSection() {
             viewport={{ once: true }}
           >
             <div className="space-y-6">
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-8 text-center lg:text-left">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-8 text-center">
                 What's the reason for <GradientText>choosing me?</GradientText>
               </h3>
-              <div className="grid gap-4 sm:gap-6">
+              <div className="grid lg:grid-cols-3 gap-4 sm:gap-6">
                 {features.map((feature, index) => (
                   <FeatureCard
                     key={feature.title}

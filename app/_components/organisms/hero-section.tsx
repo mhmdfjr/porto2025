@@ -8,17 +8,41 @@ import {
   Mail,
   Twitter,
   Instagram,
+  MessageCircle,
+  BookOpen,
 } from "lucide-react";
 import { GradientText } from "@/app/_components/atoms/gradient-text";
 import { AnimatedIcon } from "@/app/_components/atoms/animated-icon";
 import { Button } from "@/components/ui/button";
 
 const socialLinks = [
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Mail, href: "#", label: "Email" },
+  {
+    icon: Linkedin,
+    href: "https://www.linkedin.com/in/mohamadfajarnurkhasani/",
+    label: "LinkedIn",
+  },
+  { icon: Github, href: "https://github.com/mhmdfjr", label: "GitHub" },
+  {
+    icon: Instagram,
+    href: "https://instagram.com/holy.jar_",
+    label: "Instagram",
+  },
+  { icon: Twitter, href: "https://x.com/mohfajarnk", label: "Twitter" },
+  {
+    icon: MessageCircle,
+    href: "https://api.whatsapp.com/send/?phone=6285700072350&text=Hello%20Fajar,%20are%20you%20available%20to%20talk?&type=phone_number&app_absent=0",
+    label: "WhatsApp",
+  },
+  {
+    icon: Mail,
+    href: "mailto:moh.fajar1304@gmail.com?subject=Hello&body=Hi%20Fajar,%0A%0AHow%20are%20you?",
+    label: "Email",
+  },
+  {
+    icon: BookOpen,
+    href: "https://mhmdfjr.wordpress.com/",
+    label: "WordPress",
+  },
 ];
 
 export function HeroSection() {
@@ -40,9 +64,13 @@ export function HeroSection() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <GradientText>Mohamad Fajar</GradientText>
+            <GradientText className="font-bonanova-display">
+              Mohamad Fajar
+            </GradientText>
             <br />
-            <span className="text-white">Nur Khasani</span>
+            <span className="text-white font-bonanova-display">
+              Nur Khasani
+            </span>
           </motion.h1>
 
           <motion.p
@@ -82,10 +110,9 @@ export function HeroSection() {
           </motion.div>
 
           <motion.div
-            className="pt-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
+            className="pt-12 transform -translate-x-1/2"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
           >
             <Button
               size="lg"
@@ -103,15 +130,6 @@ export function HeroSection() {
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-      >
-        <ArrowDown className="text-white/50" size={24} />
-      </motion.div>
     </section>
   );
 }

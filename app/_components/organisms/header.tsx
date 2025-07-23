@@ -52,10 +52,10 @@ export function Header() {
             whileHover={{ scale: 1.05 }}
             className="text-2xl font-bold"
           >
-            <p className="font-bonanova-display">
+            <h5 className="font-bonanova-display">
               <GradientText className="font-imperial-script">M</GradientText>
               hmdfjr
-            </p>
+            </h5>
           </motion.div>
 
           {/* Desktop Navigation */}

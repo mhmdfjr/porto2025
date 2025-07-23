@@ -1,45 +1,35 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { GradientText } from "@/app/_components/atoms/gradient-text";
 import { WorkCard } from "@/app/_components/molecules/work-card";
-
-const workExperience = [
-  {
-    company: "Freelancer",
-    position: "Digital Artist",
-    duration: "Jul 2018 - Feb 2022",
-    description:
-      "Created digital artwork and designs for various clients, focusing on creative visual solutions.",
-    logo: "/placeholder.svg?height=48&width=48",
-  },
-  {
-    company: "Ngoding Community",
-    position: "Content Writer",
-    duration: "Dec 2022 - Present",
-    description:
-      "Writing technical content and tutorials for the programming community.",
-    logo: "/placeholder.svg?height=48&width=48",
-  },
-  {
-    company: "Serpihan Tech Solution",
-    position: "Frontend Web Developer",
-    duration: "Jul 2024 - Present",
-    description:
-      "Developing modern web applications using React, Next.js, and other cutting-edge technologies.",
-    logo: "/placeholder.svg?height=48&width=48",
-  },
-  {
-    company: "SMK N 1 Pemalang",
-    position: "IT Support",
-    duration: "Jan 2020 - Mar 2020",
-    description:
-      "Provided technical support and maintained computer systems and networks.",
-    logo: "/placeholder.svg?height=48&width=48",
-  },
-];
+import { getWorks } from "@/lib/database";
+import type { Work } from "@/lib/supabase";
 
 export function WorkSection() {
+  const [works, setWorks] = useState<Work[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchWorks() {
+      const worksData = await getWorks();
+      setWorks(worksData);
+      setLoading(false);
+    }
+    fetchWorks();
+  }, []);
+
+  if (loading) {
+    return (
+      <section id="work" className="py-20 relative">
+        <div className="container mx-auto px-4 text-center">
+          <div className="text-white">Loading work experience...</div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="work" className="py-20 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-900/5 to-transparent" />
@@ -53,20 +43,33 @@ export function WorkSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 font-bonanova-display">
-            <p>
-              <GradientText className="font-imperial-script text-5xl md:text-6xl font-bold overflow-visible">
-                W
-              </GradientText>
-              orks
-            </p>
+            <GradientText className="font-imperial-script text-5xl md:text-6xl font-bold overflow-visible">
+              W
+            </GradientText>
+            orks
           </h2>
         </motion.div>
 
         <div className="max-w-4xl mx-auto space-y-8">
-          {workExperience.map((work, index) => (
+          {works.map((work, index) => (
             <WorkCard
-              key={`${work.company}-${work.position}`}
-              {...work}
+              key={work.id}
+              company={work.company}
+              position={work.role}
+              duration={`${new Date(work.start).toLocaleDateString("en-US", {
+                month: "short",
+                year: "numeric",
+              })} - ${
+                work.end
+                  ? new Date(work.end).toLocaleDateString("en-US", {
+                      month: "short",
+                      year: "numeric",
+                    })
+                  : "Present"
+              }`}
+              location={work.location || "Unknown Location"}
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+              logo={work.image}
               delay={index * 0.2}
             />
           ))}

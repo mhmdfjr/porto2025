@@ -1,15 +1,20 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import type { LucideIcon } from "lucide-react"
+import { motion } from "framer-motion";
+import type { LucideIcon } from "lucide-react";
+import type { ComponentType } from "react";
 
 interface AnimatedIconProps {
-  icon: LucideIcon
-  size?: number
-  className?: string
+  icon: LucideIcon | ComponentType<any>;
+  size?: number;
+  className?: string;
 }
 
-export function AnimatedIcon({ icon: Icon, size = 24, className }: AnimatedIconProps) {
+export function AnimatedIcon({
+  icon: Icon,
+  size = 24,
+  className,
+}: AnimatedIconProps) {
   return (
     <motion.div
       whileHover={{ scale: 1.1, rotate: 5 }}
@@ -19,5 +24,5 @@ export function AnimatedIcon({ icon: Icon, size = 24, className }: AnimatedIconP
     >
       <Icon size={size} />
     </motion.div>
-  )
+  );
 }

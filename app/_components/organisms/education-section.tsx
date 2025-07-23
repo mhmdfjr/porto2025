@@ -1,29 +1,37 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { GradientText } from "@/app/_components/atoms/gradient-text";
 import { GlowCard } from "@/app/_components/atoms/glow-card";
 import { Calendar, MapPin } from "lucide-react";
+import { getEducations, formatDateRange } from "@/lib/database";
+import type { Education } from "@/lib/supabase";
 import Image from "next/image";
 
-const education = [
-  {
-    institution: "Universitas Negeri Semarang",
-    degree: "Computer Science",
-    duration: "2022 - Present",
-    location: "Semarang, Indonesia",
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    institution: "SMK N 1 Pemalang",
-    degree: "IT Networking",
-    duration: "2019 - 2022",
-    location: "Pemalang, Indonesia",
-    image: "/placeholder.svg?height=200&width=300",
-  },
-];
-
 export function EducationSection() {
+  const [educations, setEducations] = useState<Education[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchEducations() {
+      const educationsData = await getEducations();
+      setEducations(educationsData);
+      setLoading(false);
+    }
+    fetchEducations();
+  }, []);
+
+  if (loading) {
+    return (
+      <section id="education" className="py-20 relative">
+        <div className="container mx-auto px-4 text-center">
+          <div className="text-white">Loading education...</div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="education" className="py-20 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-900/5 to-transparent" />
@@ -37,48 +45,56 @@ export function EducationSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 font-bonanova-display">
-            <p>
-              <GradientText className="font-imperial-script text-5xl md:text-6xl font-bold overflow-visible">
-                E
-              </GradientText>
-              ducations
-            </p>
+            <GradientText className="font-imperial-script text-5xl md:text-6xl font-bold overflow-visible">
+              E
+            </GradientText>
+            ducations
           </h2>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {education.map((edu, index) => (
+          {educations.map((edu, index) => (
             <motion.div
-              key={edu.institution}
+              key={edu.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
             >
-              <GlowCard className="overflow-hidden">
-                <div className="relative h-48">
-                  <Image
-                    src={edu.image || "/placeholder.svg"}
-                    alt={edu.institution}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    {edu.institution}
-                  </h3>
-                  <p className="text-red-400 font-medium mb-3">{edu.degree}</p>
-                  <div className="space-y-2 text-sm text-gray-400">
-                    <div className="flex items-center gap-2">
-                      <Calendar size={14} />
-                      {edu.duration}
+              <GlowCard className="p-6 h-full">
+                {/* Horizontal layout with smaller image */}
+                <div className="flex items-start gap-4">
+                  {/* Smaller image on the left */}
+                  <div className="relative w-20 h-20 flex-shrink-0">
+                    <Image
+                      src={edu.image || "/placeholder.svg?height=80&width=80"}
+                      alt={edu.name}
+                      fill
+                      className="object-cover rounded-lg"
+                    />
+                  </div>
+
+                  {/* Content on the right */}
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold text-white mb-2">
+                      {edu.name}
+                    </h3>
+                    <p className="text-red-400 font-medium mb-3">
+                      {edu.major} {edu.name && `in ${edu.name}`}
+                    </p>
+                    <div className="space-y-2 text-sm text-gray-400">
+                      <div className="flex items-center gap-2">
+                        <Calendar size={14} />
+                        {formatDateRange(edu.start, edu.end)}
+                      </div>
+                      {edu.location && (
+                        <div className="flex items-center gap-2">
+                          <MapPin size={14} />
+                          {edu.location}
+                        </div>
+                      )}
                     </div>
-                    <div className="flex items-center gap-2">
-                      <MapPin size={14} />
-                      {edu.location}
-                    </div>
+                    {/* {edu.description && <p className="text-gray-300 text-sm mt-3 leading-relaxed">{edu.description}</p>} */}
                   </div>
                 </div>
               </GlowCard>

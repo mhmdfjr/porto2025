@@ -18,11 +18,9 @@ export function Footer() {
           className="text-center"
         >
           <div className="mb-6">
-            <h3 className="text-2xl font-bold mb-2">
-              <p className="font-bonanova-display">
-                <GradientText className="font-imperial-script">M</GradientText>
-                hmdfjr
-              </p>
+            <h3 className="text-2xl font-bonanova-display font-bold mb-2">
+              <GradientText className="font-imperial-script">M</GradientText>
+              hmdfjr
             </h3>
             <p className="text-gray-400">Frontend Web Developer</p>
           </div>
