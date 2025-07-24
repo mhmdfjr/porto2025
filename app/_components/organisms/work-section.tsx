@@ -23,7 +23,7 @@ export function WorkSection() {
     return (
       <section id="work" className="py-20 relative">
         <div className="container mx-auto px-4 text-center">
-          <div className="text-white">Loading work experience...</div>
+          <div className="text-white">Loading works...</div>
         </div>
       </section>
     );
