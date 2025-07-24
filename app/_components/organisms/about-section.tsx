@@ -56,9 +56,9 @@ export function AboutSection() {
             <GlowCard className="w-full lg:w-1/2 p-4 sm:p-6 lg:p-8">
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
                 <ProfilCard
-                  imageSrc="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
-                  altText="Kendrick Lamar - GNX Album Cover"
-                  captionText="Kendrick Lamar - GNX"
+                  imageSrc="https://lgklimjczxflxpmtjsoi.supabase.co/storage/v1/object/public/porto//profil.png"
+                  altText="Mohamad Fajar"
+                  captionText="Mohamad Fajar"
                   containerHeight="200px"
                   containerWidth="200px"
                   imageHeight="200px"
