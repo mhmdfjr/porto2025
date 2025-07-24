@@ -44,8 +44,10 @@ export function ProjectCard({
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         </div>
         <div className="p-6">
-          <h3 className="text-xl font-semibold text-white mb-2">{name}</h3>
-          <p className="text-gray-400 mb-4 leading-relaxed">{placeholder}</p>
+          <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-bodoni-moda text-white mb-2">
+            {name}
+          </h3>
+          <p className="text-white mb-4 leading-relaxed">{placeholder}</p>
           <div className="flex flex-wrap gap-2 mb-4">
             {techstack.map((tech) => (
               <span

@@ -4,16 +4,13 @@
 
 @layer base {
   :root {
+    /* Base colors */
     --background: 0 0% 0%;
     --foreground: 0 0% 100%;
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 72.2% 50.6%;
-    --primary-foreground: 0 85.7% 97.3%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 14.9%;
     --muted-foreground: 0 0% 63.9%;
     --accent: 0 0% 14.9%;
@@ -24,8 +21,74 @@
     --input: 0 0% 14.9%;
     --ring: 0 72.2% 50.6%;
     --radius: 0.5rem;
+
+    /* Custom Portfolio Colors */
+    --primary: 0 72% 51%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 0 72% 61%;
+    --primary-dark: 0 72% 41%;
+
+    --secondary: 25 95% 53%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 25 95% 63%;
+    --secondary-dark: 25 95% 43%;
+
+    --tertiary: 0 0% 40%;
+    --tertiary-foreground: 0 0% 100%;
+    --tertiary-light: 0 0% 50%;
+    --tertiary-dark: 0 0% 30%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --success-light: 142 76% 46%;
+    --success-dark: 142 76% 26%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --warning-light: 38 92% 60%;
+    --warning-dark: 38 92% 40%;
+
+    --error: 0 84% 60%;
+    --error-foreground: 0 0% 100%;
+    --error-light: 0 84% 70%;
+    --error-dark: 0 84% 50%;
+
+    --info: 221 83% 53%;
+    --info-foreground: 0 0% 100%;
+    --info-light: 221 83% 63%;
+    --info-dark: 221 83% 43%;
+
+    /* Gradient Colors */
+    --gradient-primary-start: 0 72% 51%;
+    --gradient-primary-end: 25 95% 53%;
+    --gradient-secondary-start: 25 95% 53%;
+    --gradient-secondary-end: 0 72% 51%;
+
+    /* Surface Colors */
+    --surface: 0 0% 5%;
+    --surface-light: 0 0% 10%;
+    --surface-lighter: 0 0% 15%;
+    --surface-dark: 0 0% 2%;
+
+    /* Text Colors */
+    --text-primary: 0 0% 100%;
+    --text-secondary: 0 0% 70%;
+    --text-tertiary: 0 0% 50%;
+    --text-muted: 0 0% 40%;
+
+    /* Border Colors */
+    --border-primary: 0 0% 20%;
+    --border-secondary: 0 0% 15%;
+    --border-accent: 0 72% 51%;
+
+    /* Shadow Colors */
+    --shadow-primary: 0 72% 51%;
+    --shadow-secondary: 25 95% 53%;
+    --shadow-dark: 0 0% 0%;
+
+    /* Font Variables */
     --font-imperial-script: "Imperial Script", cursive;
-    --font-bonanova-display: "Bona Nova", serif;
+    --font-bodoni-moda: "Bodoni Moda SC", serif;
   }
 }
 
@@ -45,11 +108,23 @@
     font-family: var(--font-imperial-script);
   }
 
-  .font-bonanova-display {
-    font-family: var(--font-bonanova-display);
+  .font-bodoni-moda {
+    font-family: var(--font-bodoni-moda);
   }
 
-  /* Reduced background gradients since Spline will provide the main visual interest */
+  /* Custom text sizes for mixed typography */
+  .text-10xl {
+    font-size: 9rem;
+    line-height: 1;
+  }
+
+  @media (max-width: 768px) {
+    .text-10xl {
+      font-size: 6rem;
+    }
+  }
+
+  /* Background gradients */
   body::before {
     content: "";
     position: fixed;
@@ -60,14 +135,13 @@
     z-index: -2;
     background: linear-gradient(
       135deg,
-      rgba(220, 38, 38, 0.03) 0%,
-      rgba(0, 0, 0, 1) 10%,
-      rgba(0, 0, 0, 1) 90%,
-      rgba(251, 146, 60, 0.03) 100%
+      hsl(var(--primary) / 0.03) 0%,
+      hsl(var(--background)) 10%,
+      hsl(var(--background)) 90%,
+      hsl(var(--secondary) / 0.03) 100%
     );
   }
 
-  /* Optional: Keep a very subtle animated gradient behind Spline */
   body::after {
     content: "";
     position: fixed;
@@ -78,12 +152,12 @@
     z-index: -2;
     background: radial-gradient(
         circle at 5% 15%,
-        rgba(239, 68, 68, 0.02) 0%,
+        hsl(var(--primary) / 0.02) 0%,
         transparent 25%
       ),
       radial-gradient(
         circle at 95% 85%,
-        rgba(251, 146, 60, 0.02) 0%,
+        hsl(var(--secondary) / 0.02) 0%,
         transparent 25%
       );
     animation: backgroundShift 40s ease-in-out infinite;
@@ -95,24 +169,24 @@
   100% {
     background: radial-gradient(
         circle at 5% 15%,
-        rgba(239, 68, 68, 0.02) 0%,
+        hsl(var(--primary) / 0.02) 0%,
         transparent 25%
       ),
       radial-gradient(
         circle at 95% 85%,
-        rgba(251, 146, 60, 0.02) 0%,
+        hsl(var(--secondary) / 0.02) 0%,
         transparent 25%
       );
   }
   50% {
     background: radial-gradient(
         circle at 95% 15%,
-        rgba(239, 68, 68, 0.02) 0%,
+        hsl(var(--primary) / 0.02) 0%,
         transparent 25%
       ),
       radial-gradient(
         circle at 5% 85%,
-        rgba(251, 146, 60, 0.02) 0%,
+        hsl(var(--secondary) / 0.02) 0%,
         transparent 25%
       );
   }
@@ -124,16 +198,24 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
+  background: hsl(var(--surface));
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #ef4444, #f97316);
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--primary)),
+    hsl(var(--secondary))
+  );
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #dc2626, #ea580c);
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--primary-dark)),
+    hsl(var(--secondary-dark))
+  );
 }
 
 /* Smooth animations */
@@ -143,4 +225,163 @@
     backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+/* Custom utility classes */
+@layer utilities {
+  /* Background utilities */
+  .bg-primary {
+    background-color: hsl(var(--primary));
+  }
+  .bg-primary-light {
+    background-color: hsl(var(--primary-light));
+  }
+  .bg-primary-dark {
+    background-color: hsl(var(--primary-dark));
+  }
+  .bg-secondary {
+    background-color: hsl(var(--secondary));
+  }
+  .bg-secondary-light {
+    background-color: hsl(var(--secondary-light));
+  }
+  .bg-secondary-dark {
+    background-color: hsl(var(--secondary-dark));
+  }
+  .bg-surface {
+    background-color: hsl(var(--surface));
+  }
+  .bg-surface-light {
+    background-color: hsl(var(--surface-light));
+  }
+  .bg-surface-lighter {
+    background-color: hsl(var(--surface-lighter));
+  }
+
+  /* Text utilities */
+  .text-primary {
+    color: hsl(var(--text-primary));
+  }
+  .text-secondary {
+    color: hsl(var(--text-secondary));
+  }
+  .text-tertiary {
+    color: hsl(var(--text-tertiary));
+  }
+  .text-muted {
+    color: hsl(var(--text-muted));
+  }
+  .text-primary-color {
+    color: hsl(var(--primary));
+  }
+  .text-secondary-color {
+    color: hsl(var(--secondary));
+  }
+  .text-success {
+    color: hsl(var(--success));
+  }
+  .text-warning {
+    color: hsl(var(--warning));
+  }
+  .text-error {
+    color: hsl(var(--error));
+  }
+  .text-info {
+    color: hsl(var(--info));
+  }
+
+  /* Border utilities */
+  .border-primary {
+    border-color: hsl(var(--border-primary));
+  }
+  .border-secondary {
+    border-color: hsl(var(--border-secondary));
+  }
+  .border-accent {
+    border-color: hsl(var(--border-accent));
+  }
+  .border-primary-color {
+    border-color: hsl(var(--primary));
+  }
+  .border-secondary-color {
+    border-color: hsl(var(--secondary));
+  }
+
+  /* Gradient utilities */
+  .bg-gradient-primary {
+    background: linear-gradient(
+      to right,
+      hsl(var(--gradient-primary-start)),
+      hsl(var(--gradient-primary-end))
+    );
+  }
+  .bg-gradient-secondary {
+    background: linear-gradient(
+      to right,
+      hsl(var(--gradient-secondary-start)),
+      hsl(var(--gradient-secondary-end))
+    );
+  }
+  .bg-gradient-primary-vertical {
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--gradient-primary-start)),
+      hsl(var(--gradient-primary-end))
+    );
+  }
+
+  /* Shadow utilities */
+  .shadow-primary {
+    box-shadow: 0 0 20px hsl(var(--shadow-primary) / 0.3);
+  }
+  .shadow-secondary {
+    box-shadow: 0 0 20px hsl(var(--shadow-secondary) / 0.3);
+  }
+  .shadow-primary-lg {
+    box-shadow: 0 0 40px hsl(var(--shadow-primary) / 0.4);
+  }
+
+  /* Hover utilities */
+  .hover-primary:hover {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+  .hover-secondary:hover {
+    background-color: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+  }
+
+  /* Opacity utilities for colors */
+  .bg-primary\/10 {
+    background-color: hsl(var(--primary) / 0.1);
+  }
+  .bg-primary\/20 {
+    background-color: hsl(var(--primary) / 0.2);
+  }
+  .bg-primary\/30 {
+    background-color: hsl(var(--primary) / 0.3);
+  }
+  .bg-secondary\/10 {
+    background-color: hsl(var(--secondary) / 0.1);
+  }
+  .bg-secondary\/20 {
+    background-color: hsl(var(--secondary) / 0.2);
+  }
+  .bg-secondary\/30 {
+    background-color: hsl(var(--secondary) / 0.3);
+  }
+
+  .text-primary\/70 {
+    color: hsl(var(--primary) / 0.7);
+  }
+  .text-secondary\/70 {
+    color: hsl(var(--secondary) / 0.7);
+  }
+
+  .border-primary\/30 {
+    border-color: hsl(var(--primary) / 0.3);
+  }
+  .border-secondary\/30 {
+    border-color: hsl(var(--secondary) / 0.3);
+  }
 }

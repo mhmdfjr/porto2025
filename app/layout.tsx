@@ -1,6 +1,6 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Inter, Imperial_Script, Bona_Nova } from "next/font/google";
+import { Inter, Imperial_Script, Bodoni_Moda_SC } from "next/font/google";
 import "./globals.css";
 import { FloatingParticles } from "@/app/_components/atoms/floating-particles";
 import { SplineBackground } from "@/app/_components/atoms/spline-background";
@@ -11,16 +11,16 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const bonaNova = Bona_Nova({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-buna-nova",
-});
-
 const imperialScript = Imperial_Script({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-imperial-script",
+});
+
+const bodoniModa = Bodoni_Moda_SC({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-bodoni",
 });
 
 export const metadata: Metadata = {
@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${inter.variable} ${bonaNova.variable} ${imperialScript.variable}`}
+        className={`${inter.variable} ${imperialScript.variable} ${bodoniModa.variable}`}
       >
         <SplineBackground />
         <FloatingParticles />

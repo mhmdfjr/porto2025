@@ -12,7 +12,6 @@ import {
   GraduationCap,
   Users,
 } from "lucide-react";
-import { GradientText } from "@/app/_components/atoms/gradient-text";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
@@ -52,19 +51,21 @@ export function Header() {
             whileHover={{ scale: 1.05 }}
             className="text-2xl font-bold"
           >
-            <h5 className="font-bonanova-display">
-              <GradientText className="font-imperial-script">M</GradientText>
+            <h5 className="font-bodoni-moda">
+              <span className="font-imperial-script bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                M
+              </span>
               hmdfjr
             </h5>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-4 md:space-x-6 lg:space-x-8">
             {navItems.map((item) => (
               <motion.a
                 key={item.name}
                 href={item.href}
-                className="text-gray-300 hover:text-white transition-colors duration-200"
+                className="text-sm lg:text-base text-white hover:text-secondary-color transition-colors duration-200 font-bodoni-moda font-semibold"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -96,7 +97,7 @@ export function Header() {
               <motion.a
                 key={item.name}
                 href={item.href}
-                className="flex items-center gap-3 px-4 py-3 text-gray-300 hover:text-white transition-colors"
+                className="flex items-center gap-3 px-4 py-3 text-white hover:text-secondary-color transition-colors font-bodoni-moda font-semibold"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}

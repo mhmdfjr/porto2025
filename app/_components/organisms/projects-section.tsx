@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { GradientText } from "@/app/_components/atoms/gradient-text";
 import { ProjectCard } from "@/app/_components/molecules/project-card";
 import { getProjects } from "@/lib/database";
 import type { Project } from "@/lib/supabase";
@@ -14,7 +13,6 @@ export function ProjectsSection() {
   useEffect(() => {
     async function fetchProjects() {
       const projectsData = await getProjects();
-      console.log("Fetched projects:", projectsData);
       setProjects(projectsData);
       setLoading(false);
     }
@@ -43,10 +41,10 @@ export function ProjectsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-bonanova-display">
-            <GradientText className="font-imperial-script text-5xl md:text-6xl font-bold overflow-visible">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 font-bodoni-moda">
+            <span className="font-imperial-script font-bold overflow-visible bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               P
-            </GradientText>
+            </span>
             rojects
           </h2>
         </motion.div>

@@ -2,10 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Code, Heart, Lightbulb } from "lucide-react";
-import { GradientText } from "@/app/_components/atoms/gradient-text";
 import { FeatureCard } from "@/app/_components/molecules/feature-card";
 import { GlowCard } from "@/app/_components/atoms/glow-card";
-import Image from "next/image";
 import ProfilCard from "@/app/_components/molecules/profil-card";
 
 const features = [
@@ -39,10 +37,10 @@ export function AboutSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-bonanova-display">
-            <GradientText className=" font-imperial-script text-5xl md:text-6xl font-bold overflow-visible">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 font-bodoni-moda">
+            <span className=" font-imperial-script font-bold overflow-visible bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               A
-            </GradientText>
+            </span>
             <span>bout Me</span>
           </h2>
         </motion.div>
@@ -75,10 +73,10 @@ export function AboutSection() {
                   }
                 />
                 <div className="text-center sm:text-left">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 font-bodoni-moda">
                     Hello, Fellas!
                   </h3>
-                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+                  <p className="text-sm sm:text-base text-white leading-relaxed">
                     My name is <strong>Mohamad Fajar Nur Khasani</strong> and
                     I'm 21 years old. I'm a Full Stack Web Developer. I studied
                     Computer Science at University & Computer Networks in High
@@ -97,8 +95,11 @@ export function AboutSection() {
             viewport={{ once: true }}
           >
             <div className="space-y-6">
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-8 text-center">
-                What's the reason for <GradientText>choosing me?</GradientText>
+              <h3 className="text-xl sm:text-2xl lg:text-3xl text-white mb-6 sm:mb-8 text-center font-bodoni-moda font-semibold">
+                What's the reason for{" "}
+                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  choosing me?
+                </span>
               </h3>
               <div className="grid lg:grid-cols-3 gap-4 sm:gap-6">
                 {features.map((feature, index) => (

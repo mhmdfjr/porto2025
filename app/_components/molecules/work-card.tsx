@@ -106,10 +106,10 @@ export function WorkCard({
             />
           </div>
           <div className="flex-1">
-            <h3 className="text-xl font-semibold text-white group-hover:text-red-100 transition-colors duration-300">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-bodoni-moda text-white group-hover:text-red-100 transition-colors duration-300">
               {jobPosition}
             </h3>
-            <p className="text-red-400 font-medium mb-2 group-hover:text-red-300 transition-colors duration-300">
+            <p className="text-secondary-color font-medium mb-2 group-hover:text-secondary-color transition-colors duration-300">
               {company}
             </p>
             <div className="flex items-center gap-4 text-sm text-gray-400 mb-3 group-hover:text-gray-300 transition-colors duration-300">
@@ -124,7 +124,7 @@ export function WorkCard({
                 </div>
               )}
             </div>
-            <p className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
+            <p className="text-white leading-relaxed group-hover:text-red-100 transition-colors duration-300">
               {description}
             </p>
           </div>

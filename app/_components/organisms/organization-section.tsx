@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { GradientText } from "@/app/_components/atoms/gradient-text";
 import { GlowCard } from "@/app/_components/atoms/glow-card";
 import { Calendar, MapPin } from "lucide-react";
 import Image from "next/image";
@@ -44,10 +43,10 @@ export function OrganizationSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-bonanova-display">
-            <GradientText className="font-imperial-script text-5xl md:text-6xl font-bold overflow-visible">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 font-bodoni-moda">
+            <span className="font-imperial-script font-bold overflow-visible bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               O
-            </GradientText>
+            </span>
             rganizations
           </h2>
         </motion.div>
@@ -73,19 +72,21 @@ export function OrganizationSection() {
                     />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-white mb-1">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-bodoni-moda text-white mb-1">
                       {org.name}
                     </h3>
                     {org.role.map((role, roleIndex) => (
                       <div
                         key={roleIndex}
-                        className="flex items-center justify-start gap-4"
+                        className="flex flex-col md:flex-row md:items-center justify-start md:gap-4"
                       >
                         <div className="flex items-center gap-1 mb-2">
                           <Calendar size={14} />
                           {org.year[roleIndex]}
                         </div>
-                        <p className="text-red-400 font-medium mb-2">{role}</p>
+                        <p className="text-secondary-color font-medium mb-2">
+                          {role}
+                        </p>
                       </div>
                     ))}
                     <div className="flex items-center gap-4 text-sm text-gray-400 mb-3">
@@ -94,7 +95,7 @@ export function OrganizationSection() {
                         {org.location}
                       </div>
                     </div>
-                    <p className="text-gray-300 leading-relaxed">
+                    <p className="text-white leading-relaxed">
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     </p>
                   </div>

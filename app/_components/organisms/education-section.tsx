@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { GradientText } from "@/app/_components/atoms/gradient-text";
 import { GlowCard } from "@/app/_components/atoms/glow-card";
 import { Calendar, MapPin } from "lucide-react";
 import { getEducations, formatDateRange } from "@/lib/database";
@@ -44,15 +43,15 @@ export function EducationSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-bonanova-display">
-            <GradientText className="font-imperial-script text-5xl md:text-6xl font-bold overflow-visible">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 font-bodoni-moda">
+            <span className="font-imperial-script font-bold overflow-visible bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               E
-            </GradientText>
+            </span>
             ducations
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {educations.map((edu, index) => (
             <motion.div
               key={edu.id}
@@ -76,10 +75,10 @@ export function EducationSection() {
 
                   {/* Content on the right */}
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-white mb-2">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-bodoni-moda text-white mb-2">
                       {edu.name}
                     </h3>
-                    <p className="text-red-400 font-medium mb-3">
+                    <p className="text-secondary-color font-medium mb-3">
                       {edu.major} {edu.name && `in ${edu.name}`}
                     </p>
                     <div className="space-y-2 text-sm text-gray-400">

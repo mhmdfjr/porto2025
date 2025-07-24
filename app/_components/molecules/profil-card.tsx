@@ -107,7 +107,7 @@ export default function ProfilCard({
         />
 
         {displayOverlayContent && overlayContent && (
-          <motion.div className="absolute bottom-2 left-2 z-[2] will-change-transform [transform:translateZ(10px)]">
+          <motion.div className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bodoni-moda font-semibold absolute bottom-2 left-2 z-[2] will-change-transform [transform:translateZ(10px)]">
             {overlayContent}
           </motion.div>
         )}

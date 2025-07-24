@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { GradientText } from "@/app/_components/atoms/gradient-text";
 import { SkillTag } from "@/app/_components/molecules/skill-tag";
 import { getSkills } from "@/lib/database";
 import type { Skill } from "@/lib/supabase";
@@ -42,10 +41,10 @@ export function SkillsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-bonanova-display">
-            <GradientText className="font-imperial-script text-5xl md:text-6xl font-bold overflow-visible">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 font-bodoni-moda">
+            <span className="font-imperial-script font-bold overflow-visible bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               S
-            </GradientText>
+            </span>
             kills
           </h2>
         </motion.div>

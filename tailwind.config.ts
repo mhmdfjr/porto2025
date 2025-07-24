@@ -24,10 +24,20 @@ const config: Config = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          light: "hsl(var(--primary-light))",
+          dark: "hsl(var(--primary-dark))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
+          light: "hsl(var(--secondary-light))",
+          dark: "hsl(var(--secondary-dark))",
+        },
+        tertiary: {
+          DEFAULT: "hsl(var(--tertiary))",
+          foreground: "hsl(var(--tertiary-foreground))",
+          light: "hsl(var(--tertiary-light))",
+          dark: "hsl(var(--tertiary-dark))",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
@@ -40,6 +50,36 @@ const config: Config = {
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+          light: "hsl(var(--success-light))",
+          dark: "hsl(var(--success-dark))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+          light: "hsl(var(--warning-light))",
+          dark: "hsl(var(--warning-dark))",
+        },
+        error: {
+          DEFAULT: "hsl(var(--error))",
+          foreground: "hsl(var(--error-foreground))",
+          light: "hsl(var(--error-light))",
+          dark: "hsl(var(--error-dark))",
+        },
+        info: {
+          DEFAULT: "hsl(var(--info))",
+          foreground: "hsl(var(--info-foreground))",
+          light: "hsl(var(--info-light))",
+          dark: "hsl(var(--info-dark))",
+        },
+        surface: {
+          DEFAULT: "hsl(var(--surface))",
+          light: "hsl(var(--surface-light))",
+          lighter: "hsl(var(--surface-lighter))",
+          dark: "hsl(var(--surface-dark))",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -72,8 +112,8 @@ const config: Config = {
           "100%": { transform: "translateY(0)", opacity: "1" },
         },
         glow: {
-          "0%": { boxShadow: "0 0 20px rgba(239, 68, 68, 0.5)" },
-          "100%": { boxShadow: "0 0 30px rgba(251, 146, 60, 0.8)" },
+          "0%": { boxShadow: "0 0 20px hsl(var(--primary) / 0.5)" },
+          "100%": { boxShadow: "0 0 30px hsl(var(--secondary) / 0.8)" },
         },
       },
     },

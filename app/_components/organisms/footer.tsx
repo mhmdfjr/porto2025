@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
-import { GradientText } from "@/app/_components/atoms/gradient-text";
 
 export function Footer() {
   return (
@@ -18,8 +17,10 @@ export function Footer() {
           className="text-center"
         >
           <div className="mb-6">
-            <h3 className="text-2xl font-bonanova-display font-bold mb-2">
-              <GradientText className="font-imperial-script">M</GradientText>
+            <h3 className="text-2xl font-bodoni-moda font-bold mb-2">
+              <span className="font-imperial-script bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                M
+              </span>
               hmdfjr
             </h3>
             <p className="text-gray-400">Frontend Web Developer</p>
@@ -27,8 +28,10 @@ export function Footer() {
 
           <div className="flex items-center justify-center gap-2 text-gray-400">
             <span>Developed by</span>
-            <GradientText>Mohamad Fajar</GradientText>
-            <Heart size={16} className="text-red-400" />
+            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              Mohamad Fajar
+            </span>
+            <Heart size={16} className="text-secondary-color" />
             <span>© 2025</span>
           </div>
         </motion.div>
