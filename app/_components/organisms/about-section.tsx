@@ -68,9 +68,9 @@ export function AboutSection() {
                   showMobileWarning={false}
                   showTooltip={true}
                   displayOverlayContent={true}
-                  overlayContent={
-                    <p className="tilted-card-demo-text">Mohamad Fajar</p>
-                  }
+                  // overlayContent={
+                  //   <p className="tilted-card-demo-text">Mohamad Fajar</p>
+                  // }
                 />
                 <div className="text-center sm:text-left">
                   <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 font-bodoni-moda">
