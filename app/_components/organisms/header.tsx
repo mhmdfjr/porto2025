@@ -15,13 +15,13 @@ import {
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { name: "Home", href: "#hero", icon: Home },
-  { name: "About", href: "#about", icon: User },
-  { name: "Projects", href: "#projects", icon: Code },
-  { name: "Skills", href: "#skills", icon: Briefcase },
-  { name: "Work", href: "#work", icon: Briefcase },
-  { name: "Education", href: "#education", icon: GraduationCap },
-  { name: "Organization", href: "#organization", icon: Users },
+  { name: "Home", href: "/", icon: Home },
+  { name: "About", href: "/#about", icon: User },
+  { name: "Projects", href: "/#projects", icon: Code },
+  { name: "Skills", href: "/#skills", icon: Briefcase },
+  { name: "Work", href: "/#work", icon: Briefcase },
+  { name: "Education", href: "/#education", icon: GraduationCap },
+  { name: "Organization", href: "/#organization", icon: Users },
 ];
 
 export function Header() {
@@ -49,7 +49,7 @@ export function Header() {
         <div className="flex items-center justify-between h-16">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold"
+            className="text-2xl font-bold cursor-pointer"
           >
             <h5 className="font-bodoni-moda">
               <span className="font-imperial-script bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">

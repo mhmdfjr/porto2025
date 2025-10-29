@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { BookOpen, Github } from "lucide-react";
 import { GlowCard } from "@/app/_components/atoms/glow-card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface ProjectCardProps {
   id: number;
@@ -26,10 +27,12 @@ export function ProjectCard({
   image,
   delay = 0,
 }: ProjectCardProps) {
+  const router = useRouter();
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, x: 20 }}
+      whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6, delay }}
       viewport={{ once: true }}
     >
@@ -58,15 +61,19 @@ export function ProjectCard({
               </span>
             ))}
           </div>
-          <div className="flex gap-2">
-            <Button size="sm" className="bg-red-600 hover:bg-red-700">
-              <ExternalLink size={16} className="mr-1" />
-              Live Demo
+          <div className="flex gap-2 relative">
+            <Button
+              size="sm"
+              className="bg-red-600 hover:bg-red-700 cursor-pointer"
+              onClick={() => router.push(`/projects/${id}`)}
+            >
+              <BookOpen size={16} className="mr-1" />
+              Read More
             </Button>
             <Button
               size="sm"
               variant="outline"
-              className="border-white/20 text-white hover:bg-white/10 bg-transparent"
+              className="border-white/20 text-white hover:bg-white/10 bg-transparent cursor-pointer"
             >
               <Github size={16} className="mr-1" />
               Code

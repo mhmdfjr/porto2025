@@ -4,6 +4,8 @@ import { Inter, Imperial_Script, Bodoni_Moda_SC } from "next/font/google";
 import "./globals.css";
 import { FloatingParticles } from "@/app/_components/atoms/floating-particles";
 import { SplineBackground } from "@/app/_components/atoms/spline-background";
+import { Header } from "./_components/organisms/header";
+import { Footer } from "./_components/organisms/footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -39,9 +41,14 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${imperialScript.variable} ${bodoniModa.variable}`}
       >
-        <SplineBackground />
+        {/* <SplineBackground /> */}
         <FloatingParticles />
-        {children}
+        <div className="min-h-screen relative z-10">
+          <Header />
+          {children}
+          <Footer />
+        </div>
+        {/* {children} */}
       </body>
     </html>
   );

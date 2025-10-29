@@ -49,7 +49,7 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col items-center justify-center relative gap-10"
+      className="min-h-screen flex flex-col items-center justify-center relative gap-10 select-none"
     >
       <motion.div
         initial={{ opacity: 0, y: 30 }}

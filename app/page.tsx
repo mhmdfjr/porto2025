@@ -10,18 +10,18 @@ import { Footer } from "@/app/_components/organisms/footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen relative z-10">
-      <Header />
-      <main>
-        <HeroSection />
-        <AboutSection />
-        <ProjectsSection />
-        <SkillsSection />
-        <WorkSection />
-        <EducationSection />
-        <OrganizationSection />
-      </main>
-      <Footer />
-    </div>
+    // <div className="min-h-screen relative z-10">
+    //   <Header />
+    <main>
+      <HeroSection />
+      <AboutSection />
+      <ProjectsSection />
+      <SkillsSection />
+      <WorkSection />
+      <EducationSection />
+      <OrganizationSection />
+    </main>
+    //   <Footer />
+    // </div>
   );
 }
