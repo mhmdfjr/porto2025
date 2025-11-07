@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code, Heart, Lightbulb } from "lucide-react";
+import { Code, Heart, Lightbulb, ArrowRight } from "lucide-react";
 import { FeatureCard } from "@/app/_components/molecules/feature-card";
+import { Button } from "@/components/ui/button";
 import { GlowCard } from "@/app/_components/atoms/glow-card";
 import ProfilCard from "@/app/_components/molecules/profil-card";
+import { useRouter } from "next/navigation";
 
 const features = [
   {
@@ -25,6 +27,8 @@ const features = [
 ];
 
 export function AboutSection() {
+  const router = useRouter();
+
   return (
     <section id="about" className="py-20 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-900/5 to-transparent" />
@@ -35,7 +39,7 @@ export function AboutSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center md:text-left mb-16"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 font-bodoni-moda">
             <span className=" font-imperial-script font-bold overflow-visible bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
@@ -51,25 +55,25 @@ export function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="flex justify-center items-center"
+            className="flex flex-col md:flex-row md:justify-between md:items-end md:gap-6"
           >
-            <GlowCard className="w-full lg:w-1/2 p-4 sm:p-6 lg:p-8">
+            <GlowCard className="w-full lg:w-2/3 p-4 sm:p-6 lg:p-8">
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
                 <ProfilCard
                   imageSrc="https://lgklimjczxflxpmtjsoi.supabase.co/storage/v1/object/public/porto//profil.png"
                   altText="Mohamad Fajar"
                   captionText="Mohamad Fajar"
-                  containerHeight="200px"
-                  containerWidth="200px"
-                  imageHeight="200px"
-                  imageWidth="200px"
+                  containerHeight="150px"
+                  containerWidth="150px"
+                  imageHeight="150px"
+                  imageWidth="150px"
                   rotateAmplitude={8}
                   scaleOnHover={1.05}
                   showMobileWarning={false}
                   showTooltip={true}
                   displayOverlayContent={true}
                 />
-                <div className="text-center sm:text-left">
+                <div className="flex flex-col text-center sm:text-left justify-between">
                   <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 font-bodoni-moda">
                     Hello, Fellas!
                   </h3>
@@ -83,6 +87,20 @@ export function AboutSection() {
                 </div>
               </div>
             </GlowCard>
+
+            <div className="text-center md:text-end">
+              <p className="">Tell me your story,</p>
+              <p className="">I will tell you a story!</p>
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-center mt-6
+                                   text-white font-semibold px-8 py-3 rounded-full"
+                onClick={() => router.push("/about")}
+              >
+                Know Me Better
+                <ArrowRight className="ml-2" size={20} />
+              </Button>
+            </div>
           </motion.div>
 
           <motion.div
@@ -92,7 +110,7 @@ export function AboutSection() {
             viewport={{ once: true }}
           >
             <div className="space-y-6">
-              <h3 className="text-xl sm:text-2xl lg:text-3xl text-white mb-6 sm:mb-8 text-center font-bodoni-moda font-semibold">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl text-white mb-6 sm:mb-8 text-center font-bodoni-moda font-semibold md:text-right">
                 What's the reason for{" "}
                 <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                   choosing me?
