@@ -95,7 +95,9 @@ export function HeroSection() {
             <MapPin size={24} />
             Semarang, Indonesia
           </div>
-          <p className="">Let's build something amazing together!</p>
+          <p className="font-bodoni-moda">
+            Let's build something amazing together!
+          </p>
         </motion.div>
 
         <motion.div

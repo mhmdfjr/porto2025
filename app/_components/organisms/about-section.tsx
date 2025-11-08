@@ -88,9 +88,15 @@ export function AboutSection() {
               </div>
             </GlowCard>
 
-            <div className="text-center md:text-end">
-              <p className="">Tell me your story,</p>
-              <p className="">I will tell you a story!</p>
+            <div className="text-center md:text-right mt-6">
+              <div className="flex md:flex-col justify-center items-center md:items-end md:gap-4">
+                <p className="font-bodoni-moda text-sm">
+                  Tell me your problem,
+                </p>
+                <p className="font-bodoni-moda text-sm">
+                  I will write you a solution.
+                </p>
+              </div>
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-center mt-6
